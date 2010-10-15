@@ -11,7 +11,15 @@ var User = orm.model('User', {
     return views;
   },
   views: ['cool'],
-  indexes: ['name']
+  indexes: ['name'],
+  has_many: ['comments']
+});
+
+var Comment = orm.model('Comment', {
+  text: {type: 'string'},
+
+  indexes: ['name'],
+  belongs_to: ['user']
 });
 
 router.listen(8080);
